@@ -221,7 +221,7 @@ class FirebirdGrammar extends Grammar {
    */
   protected function typeChar(Fluent $column)
   {
-    return 'CHAR';
+    return 'CHAR ('.$column->length.')';
   }
 
   /**
