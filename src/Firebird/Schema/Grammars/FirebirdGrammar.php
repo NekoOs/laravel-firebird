@@ -287,7 +287,7 @@ class FirebirdGrammar extends Grammar {
    */
   protected function typeBigInteger(Fluent $column)
   {
-    return 'INTEGER';
+    return 'BIGINT';
   }
 
   /**
