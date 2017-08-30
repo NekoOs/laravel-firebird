@@ -15,5 +15,10 @@ class Blueprint extends BaseBlueprint {
         parent::__construct($table, $callback);
     }
     
+    public function increments($column) {
+        $this->primary($column);
+        return parent::increments($column);
+    }
+    
     
 }
