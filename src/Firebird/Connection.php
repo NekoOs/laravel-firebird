@@ -2,6 +2,7 @@
 
 use PDO;
 use Firebird\Schema\Grammars\FirebirdGrammar as SchemaGrammar;
+use Firebird\Schema\Blueprint;
 
 class Connection extends \Illuminate\Database\Connection {
 
@@ -127,7 +128,12 @@ class Connection extends \Illuminate\Database\Connection {
   {
     if (is_null($this->schemaGrammar)) { $this->useDefaultSchemaGrammar(); }
 
-    return new Schema\Builder($this);
+    $buider = new Schema\Builder($this);
+    $buider->blueprintResolver(function($table, $callback) {
+        return new Blueprint($table, $callback);
+    });
+    
+    return $buider;
   }
 
   /**
